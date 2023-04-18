@@ -9,9 +9,11 @@ float sin_wave(float t);
 float tri_wave(float t);
 
 int main(){
-    
+
+    //enable startups
+    NU32DIP_Startup();
     initSPI();
-    __builtin_enable_interrupts();
+    
     //initialize stuff
     unsigned short p; 
     float v, t;
