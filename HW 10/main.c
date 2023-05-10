@@ -9,18 +9,21 @@ void blink(int iterations, int time_ns);
 
 int main() {
     ws2812b_setup();
+    blink(1,5);
     
     int hue = 0;
     int numLEDs = 5;
-    wsColor led_colors[numLEDs];
+    wsColor colors[numLEDs];
     
     while (1) {
         _CP0_SET_COUNT(0);
-        while(_CP0_GET_COUNT()<24000){}
+        while(_CP0_GET_COUNT()<24000){} //delay
+
+        //loop thru all LEDs
         for (int i = 0; i < numLEDs; i++) {
-            led_colors[i] = HSBtoRGB((hue + 60*i) % 360, 0.5, 0.5);
+            colors[i] = HSBtoRGB((hue+30*i) % 360, 0.5, 0.5);
         }
-        ws2812b_setColor(led_colors, numLEDs);
+        ws2812b_setColor(colors, numLEDs);
         hue++;
         if (hue > 360) {
             hue = 0;
