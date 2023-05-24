@@ -19,12 +19,12 @@ int main() {
     T2CONbits.ON = 1;        // turn on Timer2
     
     while(1){
-      OC1RS = 4500; 
+      OC1RS = 7500; 
       _CP0_SET_COUNT(0);
       while(_CP0_GET_COUNT() < 24000000) { ; } 
 
       //alternate ORS
-      ORS = 7500;
+      OC1RS = 4500;
       _CP0_SET_COUNT(0);
       while(_CP0_GET_COUNT() < 24000000) { ; } 
     }
